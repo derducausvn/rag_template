@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chat — University Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- ── Sidebar ──────────────────────────────── -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>💬 RAG Chat</h2>
+                <button id="new-chat-btn" title="New Chat">+ New Chat</button>
+            </div>
+            <div id="sessions-list" class="sessions-list"></div>
+            <div class="sidebar-footer">
+                <button id="upload-btn" class="upload-btn">📄 Upload Documents</button>
+                <div id="doc-count" class="doc-count"></div>
+            </div>
+        </aside>
+
+        <!-- ── Main Chat Area ───────────────────────── -->
+        <main class="chat-area">
+            <!-- Welcome screen (shown when no session is active) -->
+            <div id="welcome-screen" class="welcome-screen">
+                <h1>University RAG Assistant</h1>
+                <p>Upload documents about your university, then ask questions.</p>
+                <div class="welcome-steps">
+                    <div class="step">
+                        <span class="step-num">1</span>
+                        <span>Upload PDF or TXT documents</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">2</span>
+                        <span>Start a new chat</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">3</span>
+                        <span>Ask questions about your uni</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat messages -->
+            <div id="chat-messages" class="chat-messages" style="display:none;"></div>
+
+            <!-- Input bar -->
+            <div id="chat-input-bar" class="chat-input-bar" style="display:none;">
+                <textarea id="chat-input" placeholder="Ask a question about your university..." rows="1"></textarea>
+                <button id="send-btn" title="Send">➤</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- ── Upload Modal ─────────────────────────────── -->
+    <div id="upload-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Upload Documents</h3>
+                <button class="modal-close" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-zone" id="upload-zone">
+                    <p>Drop PDF or TXT files here</p>
+                    <p class="upload-hint">or click to browse</p>
+                    <input type="file" id="file-input" accept=".pdf,.txt" multiple hidden>
+                </div>
+                <div id="upload-status"></div>
+                <h4>Uploaded Documents</h4>
+                <div id="doc-list" class="doc-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
